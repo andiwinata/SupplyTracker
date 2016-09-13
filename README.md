@@ -2,8 +2,7 @@
 This is Supply Tracker, a website application designed to help small business to track their supply, stock, income and outcome.
 
 ### Showcase
-<a href="https://www.youtube.com/watch?v=eGryu3QppGw"><img src="http://img.youtube.com/vi/eGryu3QppGw/0.jpg" 
-alt="Supply Tracker showcase" width="240" height="180" border="10" /></a> overview showing what the applications can do
+https://www.youtube.com/watch?v=eGryu3QppGw overview showing what the applications can do
 
 ### How to use
 * Make sure python 3.5.x installed
@@ -22,6 +21,12 @@ Note: If you are a windows user there is a `.zip` file which contains `.exe` to 
 
 Database used:
 * SQLite
+
+### Screenshots:
+
+<img src="screenshots/AddPurchaseTransaction.jpg" alt="Adding purchase transaction" width=500px/>
+<img src="screenshots/EditSupplier.jpg" alt="Editing supplier" width=500px/>
+<img src="screenshots/ItemList.jpg" alt="List of items" width=500px/>
 
 ---
 
