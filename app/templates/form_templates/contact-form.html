@@ -1,0 +1,8 @@
+{% from "_formhelpers.html" import render_form_field %}
+<form action="" method="post" name="add-contact" class="form-horizontal">
+    {{ form.hidden_tag() }}
+    {{ render_form_field(form.name) }}
+    {{ render_form_field(form.contact) }}
+    {{ render_form_field(form.address) }}
+    {{ form.submit_button(class_="btn btn-success btn-md") }}
+</form>

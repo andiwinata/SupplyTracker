@@ -1,0 +1,14 @@
+  <h4 class="inline-block margin-right">Transaction Items</h4>
+  <button id="add-item" type="button" class="btn btn-info btn-sm btn-space">Add</button>
+  <button id="remove-item" type="button" class="btn btn-danger btn-sm disabled">Remove</button>
+  <div class="transaction-items">
+    {% for item in form.transaction_items %}
+      <div class="transaction-item">
+        <!--Two options, either hide hidden or not, uncomment by removing the #..#-->
+        {% for subfield in item %}
+        {#% for subfield in item if subfield.widget.input_type != 'hidden' %#}
+          {{ render_form_field(subfield) }}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>

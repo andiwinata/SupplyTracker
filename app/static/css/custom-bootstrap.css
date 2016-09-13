@@ -1,0 +1,150 @@
+/* ---- Table ---- */
+
+thead, tfoot {
+  font-weight: bold;
+}
+.table-bordered > thead > tr > th {
+  border-top: 0px;
+  border-bottom: 5px solid #fff;
+}
+.table-bordered > tfoot > tr > td {
+  border-top: 5px solid #fff;
+  border-bottom: 0px;
+}
+.table-bordered > tbody > tr > td {
+  border-top: 0px;
+  border-bottom: 0px;
+  vertical-align: middle;
+}
+
+.table-button {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+/* ---- Main Tag ---- */
+
+html, body {
+  height: 100%;
+  overflow-y: visible;
+  font-size: 14px;
+}
+.fill-height {
+  min-height: 100%;
+  height: 100%;
+  overflow-y: visible;
+}
+
+/* ---- Other Classes ---- */
+
+.main {
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.header-title {
+  margin-bottom: 25px;
+}
+.transaction-items {
+  margin-left: 40px;
+}
+.transaction-item {
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.filter-form {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.inline-block {
+  display: inline-block;
+}
+.margin-right {
+  margin-right: 20px;
+}
+.btn-space {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button.delete-button {
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button.edit-button {
+  background-color: #69D9FF;
+  border: none;
+  color: #fff;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ---- Navigation ---- */
+
+.navbar {
+  margin-bottom: 0px;
+}
+.under-navbar {
+  padding-top: 60px;
+}
+
+/* ---- Sidebar ---- */
+
+.sidebar {
+  background-color: #444;
+  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+  max-width: 220px;
+}
+.nav-sidebar {
+  margin-top: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.nav-sidebar > li > a {
+
+}
+.nav-sidebar-collapse {
+
+}
+.nav-sidebar-collapse > li > a {
+  background-color: #555;
+}
+.custom-sidebar-header {
+  font-weight: bold;
+}
+
+/* ---- Form ---- */
+
+.form-horizontal .control-label {
+  padding-top: 6px;
+}
+.form-inline .control-label {
+  padding-top: 6px;
+}
+
+/* ---- Chosen ----*/
+.chosen-container-single .chosen-single,
+.chosen-container-active.chosen-with-drop .chosen-single {
+  background-color: #ffffff;
+  background: #ffffff;
+  line-height: 35px;
+  height: 35px;
+}
+
+.chosen-container-single .chosen-single div b {
+    background-position: 0 7px;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 7px;
+}

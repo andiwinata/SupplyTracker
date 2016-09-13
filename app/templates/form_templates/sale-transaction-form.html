@@ -1,0 +1,24 @@
+{% from "_formhelpers.html" import render_form_field %}
+<form action="" method="post" name="add-sale-transaction" class="form-horizontal">
+  {{ form.hidden_tag() }}
+  {{ render_form_field(form.yyyy) }}
+  {{ render_form_field(form.MM) }}
+  {{ render_form_field(form.dd) }}
+  <br>
+  {{ render_form_field(form.HH) }}
+  {{ render_form_field(form.mm) }}
+  {{ render_form_field(form.ss) }}
+  <br>
+  {{ render_form_field(form.delivery_fee) }}
+  {{ render_form_field(form.customer_id) }}
+  {{ render_form_field(form.courier_id) }}
+  {{ render_form_field(form.transaction_medium_id) }}
+  <br>
+  {{ render_form_field(form.notes, cols="35", rows="5") }}
+  <hr>
+  {% include 'form_templates/transaction-items.html' %}
+  {{ form.submit_button(class_="btn btn-success btn-md") }}
+</form>
+<script>
+  {% include 'javascript/clone-transaction-item.js' %}
+</script>

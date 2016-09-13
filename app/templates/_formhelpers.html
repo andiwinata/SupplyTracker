@@ -1,0 +1,27 @@
+<!--
+Macro to render form automatically and handles errors of each field
+http://flask.pocoo.org/snippets/12/
+http://bear-z.com/python/render-bootstrap-3-forms-with-wtforms-and-jinja/
+-->
+{% macro render_form_field(field, label_width=2,
+  field_width=4, extra_div_class="",
+  extra_field_class="", label_visible=true) %}
+
+  {% set div_class='form-group {} {}'.format('has-error' if field.errors else '', extra_div_class) %}
+  <div class="{{ div_class }}">
+    {% if field.type != 'HiddenField' and label_visible %}
+      {% set label_class= "control-label " + "col-xs-" + label_width|string %}
+      {{ field.label(class_=label_class + " " + extra_field_class) }}
+    {% endif %}
+
+    {% set field_class= "col-xs-" + field_width|string %}
+    <div class="{{ field_class }}">
+      {{ field(class_='form-control input-sm' + " " + extra_field_class, **kwargs)|safe }}
+      {% if field.errors %}
+        {% for error in field.errors %}
+          <p class="help-block">{{ error }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}

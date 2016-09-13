@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if title %}
+      <title>{{ title }}
+        - SupplyTracker</title>
+    {% else %}
+      <title>SupplyTracker</title>
+    {% endif %}
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/chosen.min.css" rel="stylesheet">
+    <link href="/static/css/custom-bootstrap.css" rel="stylesheet">
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/chosen.jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container-fluid fill-height">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Supply Tracker</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid fill-height under-navbar">
+      <div class="row fill-height">
+        <div class="col-xs-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="custom-sidebar-header">
+              <a href="{{ url_for('index') }}" class="custom-side-bar-elements">Home</a>
+            </li>
+            <li class="dropdown custom-sidebar-header">
+              <a href="#add-sidebar-dropdown" class="dropdown-toggle custom-side-bar-header" data-toggle="collapse" role="button" aria-haspopup="true" aria-expanded="false">Add
+                <span class="caret"></span>
+              </a>
+            </li>
+            <ul id="add-sidebar-dropdown" class="nav nav-sidebar-collapse collapse in">
+              <li>
+                <a href="{{ url_for('add_item_type') }}" class="custom-side-bar-elements">Add Item Type</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_supplier') }}" class="custom-side-bar-elements">Add Supplier</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_customer') }}" class="custom-side-bar-elements">Add Customer</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_courier') }}" class="custom-side-bar-elements">Add Courier</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_transaction_medium') }}" class="custom-side-bar-elements">Add Transaction Medium</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_purchase_transaction') }}" class="custom-side-bar-elements">Add Purchase Transaction</a>
+              </li>
+              <li>
+                <a href="{{ url_for('add_sale_transaction') }}" class="custom-side-bar-elements">Add Sale Transaction</a>
+              </li>
+            </ul>
+          <li class="dropdown custom-sidebar-header">
+            <a href="#view-sidebar-dropdown" class="dropdown-toggle custom-side-bar-header" data-toggle="collapse" role="button" aria-haspopup="true" aria-expanded="false">View
+              <span class="caret"></span>
+            </a>
+          </li>
+          <ul id="view-sidebar-dropdown" class="nav nav-sidebar-collapse collapse in">
+            <li>
+              <a href="{{ url_for('items') }}">Item List</a>
+            </li>
+            <li>
+              <a href="{{ url_for('item_types') }}">Item Type List</a>
+            </li>
+            <li>
+              <a href="{{ url_for('item_stock') }}">Item Stock</a>
+            </li>
+            <li>
+              <a href="{{ url_for('suppliers') }}">Suppliers</a>
+            </li>
+            <li>
+              <a href="{{ url_for('customers') }}">Customers</a>
+            </li>
+            <li>
+              <a href="{{ url_for('couriers') }}">Couriers</a>
+            </li>
+            <li>
+              <a href="{{ url_for('transaction_mediums') }}">Transaction Mediums</a>
+            </li>
+            <li>
+              <a href="{{ url_for('purchase_transactions') }}">Purchase Transactions</a>
+            </li>
+            <li>
+              <a href="{{ url_for('sale_transactions') }}">Sale Transactions</a>
+            </li>
+          </ul>
+      </ul>
+    </div>
+    <div class="col-xs-9 col-md-10 main">
+      <div class="container-fluid">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-success">
+            {% for message in messages %}
+              {{ message }}<br>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

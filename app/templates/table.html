@@ -1,0 +1,33 @@
+{% include 'pagination.html' %}
+<table class="table table-striped table-hover table-bordered table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      {% for elem in table[0] %}
+        <th>{{ elem | table_head }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in table %}
+      {% if (loop.index0 != 0 and not loop.last)
+        or(loop.last and row[0]not in config.TABLE_FOOTER_KEYWORDS) %}
+        <tr>
+          {% for elem in row %}
+            <td>{{ elem | table_data | safe }}</td>
+          {% endfor %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+  {% if table[-1][0] in config.TABLE_FOOTER_KEYWORDS %}
+    <tfoot>
+      <tr>
+        {% for elem in table[-1] %}
+          <td>{{ elem | table_data }}</td>
+        {% endfor %}
+      </tr>
+    </tfoot>
+  {% endif %}
+
+</table>
+{% include 'pagination.html' %}

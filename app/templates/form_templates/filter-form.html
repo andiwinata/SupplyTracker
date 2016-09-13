@@ -1,0 +1,11 @@
+{% from "_formhelpers.html" import render_form_field %}
+<div class="filter-form">
+  <form action="" method="post" name="filter-table" class="form-inline" role="form">
+      {{ form.hidden_tag() }}
+      {{ render_form_field(form.id, label_width=3, field_width=9) }}
+      {{ render_form_field(form.year, label_width=3, field_width=9) }}
+      {{ render_form_field(form.month, label_width=3, field_width=9) }}
+      {{ render_form_field(form.day, label_width=3, field_width=9) }}
+      {{ form.submit_button(class_="btn btn-success btn-sm") }}
+  </form>
+</div>

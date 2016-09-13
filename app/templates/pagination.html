@@ -1,0 +1,115 @@
+{% from "_formhelpers.html" import render_form_field %}
+
+{% if pagination is not none %}
+    {{ pagination.info }}
+    {{ pagination.links }}
+    {{ render_form_field(per_page_form.per_page,
+    label_width=7, field_width=5, extra_div_class='pull-right') }}
+
+
+<script>
+  // add listener to select field
+  $(function () {
+    $('[name={{ per_page_form.per_page.name }}]').on('change', function () {
+      var newUrl = window.location.href;
+      // remove page param
+      newUrl = removeUrlParam('{{ config.URL_PAGE_NUM }}', newUrl);
+
+      // ideally you remove and add new param should be adding param, but the func is not good enough, so instead just replace old one newUrl = removeUrlParam('{{ config.URL_PER_PAGE }}', newUrl); newUrl = insertParam('{{ config.URL_PER_PAGE }}',
+      // $(this).val());
+
+      var perPageValue = getUrlParameter('{{ config.URL_PER_PAGE }}');
+      var newPerPageParam = '{{ config.URL_PER_PAGE }}=' + $(this).val();
+
+      // replace previous param if exists
+      if (perPageValue) {
+        newUrl = newUrl.replace('{{ config.URL_PER_PAGE }}=' + perPageValue, newPerPageParam);
+      } else {
+        if (newUrl.indexOf('?') === -1) {
+          newUrl += '?';
+        } else {
+          newUrl += '&';
+        }
+        newUrl += newPerPageParam;
+      }
+
+      window.location.href = newUrl;
+
+      // ----- Functions ----- http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+      function getUrlParameter(sParam) {
+
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined
+              ? true
+              : sParameterName[1];
+          }
+        }
+      }
+
+      // http://stackoverflow.com/questions/16941104/remove-a-parameter-to-the-url-with-javascript
+      function removeUrlParam(key, sourceURL) {
+        if (!key || !sourceURL)
+          return sourceURL;
+
+        var rtn = sourceURL.split("?")[0],
+          param,
+          params_arr = [],
+          queryString = (sourceURL.indexOf("?") !== -1)
+            ? sourceURL.split("?")[1]
+            : "";
+        if (queryString !== "") {
+          params_arr = queryString.split("&");
+          for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            param = params_arr[i].split("=")[0];
+            if (param === key) {
+              params_arr.splice(i, 1);
+            }
+          }
+          rtn = rtn + "?" + params_arr.join("&");
+        }
+        return rtn;
+      }
+
+      // http://stackoverflow.com/questions/486896/adding-a-parameter-to-the-url-with-javascript
+      function insertParam(key, value) {
+        key = escape(key);
+        value = escape(value);
+
+        var kvp = document.location.search.substr(1).split('&');
+        if (kvp == '') {
+          document.location.search = '?' + key + '=' + value;
+        } else {
+
+          var i = kvp.length;
+          var x;
+          while (i--) {
+            x = kvp[i].split('=');
+
+            if (x[0] == key) {
+              x[1] = value;
+              kvp[i] = x.join('=');
+              break;
+            }
+          }
+
+          if (i < 0) {
+            kvp[kvp.length] = [key, value].join('=');
+          }
+
+          return document.location.origin + document.location.pathname + kvp.join('&');
+        }
+      }
+
+    })
+  });
+</script>
+
+{% endif %}
